@@ -10,10 +10,6 @@ browser ?= ie10
 # Binaries.
 #
 
-#wildcard i*.js
-#TESTS = $(wildcard test/index.js lib/*/test/*.js)
-#SRC = lib/*.js lib/*/*.js
-
 src = lib/*/*.js test/*.js
 tests = $(wildcard test/index.js lib/*/test/*.js)
 duo = node_modules/.bin/duo
