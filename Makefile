@@ -10,17 +10,13 @@ browser ?= ie10
 # Binaries.
 #
 
-src = lib/*/*.js test/*.js
-tests = $(wildcard test/index.js lib/*/test/*.js)
+src = $(wildcard i*.js lib/*/*.js test/*.js)
+tests = /test
 duo = node_modules/.bin/duo
 phantomjs = node_modules/.bin/duo-test phantomjs $(tests) args: \
 	--setting local-to-remote-url-access=true \
 	--setting web-security=false \
 	--path node_modules/.bin/phantomjs
-
-ifndef NODE_ENV
-include node_modules/make-lint/index.mk
-endif
 
 #
 # Commands.
@@ -28,7 +24,7 @@ endif
 
 default: build.js
 
-test: lint test-style
+test: test-style
 	@node bin/tests
 	@$(phantomjs)
 
@@ -54,9 +50,7 @@ test-cov:
 		--reporter dot
 
 test-style:
-	@node_modules/.bin/jscs \
-		lib/**/index.js \
-		--config=test/style.json
+	@node_modules/.bin/jscs lib
 
 clean:
 	@-rm -rf $(TMPDIR)/duo
