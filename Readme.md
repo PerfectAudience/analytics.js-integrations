@@ -48,3 +48,12 @@ And if you'd like you debug in the browser, run:
 
 Once your tests pass, you are ready to submit a pull request!
 
+###Notes on Linting
+
+When you're adding an integration's javscript snippet to your integration, we don't want to have to worry about the formatting that they've used. To let JSCS ignore the snippet during linting, use these comments on either side (example code courtesy of the [JSCS readme](https://github.com/jscs-dev/node-jscs#error-suppression)).
+
+```javascript
+// jscs:disable
+var c = d; // all errors on this line will be ignored
+// jscs:enable 
+```
